@@ -1,0 +1,24 @@
+<html>
+    <title>CFSJ Blog</title>
+    <head>Bem vindo ao blog</head>
+    <body>
+        <h1>Engenheiro de Sistemas</h1>
+        <h3>Analista Programador, REACT, NodeJS, Express, Flutter, Python</h3>
+        <hr>
+        {% for post in posts %}
+            <!-- {{ loop }} -->
+            <article class="post">
+                <header>
+                    <div>
+                        <h1>{{ post.title }}</h1>
+                        <div class="about">por {{ post.author }} em {{ post.created.strftime('%d/%m/%Y %H:%M') }}</div>
+                    </div>
+                </header>
+                <p class="body"> {{ post.body }} </p>
+            </article>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>

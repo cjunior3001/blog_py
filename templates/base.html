@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} CFSJ Blog</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <h1>CFSJ Blog</h1>
+        <hr>
+        <nav></nav>
+        <section class="content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </body>
+</html>
