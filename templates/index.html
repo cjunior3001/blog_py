@@ -9,7 +9,7 @@
             <header>
                 <div>
                     <h1>{{ post.title }}</h1>
-                    <div class="about">por {{ post.author }} em {{ post.created.strftime('%d/%m/%Y %H:%M') }}</div>
+                    <div class="about">por {{ post.username }} em {{ post.created.strftime('%d/%m/%Y %H:%M') }}</div>
                 </div>
             </header>
             <p class="body"> {{ post.body }} </p>
@@ -17,5 +17,7 @@
         {% if not loop.last %}
             <hr>
         {% endif %}
+    {% else %}
+        <p class="no-posts"> Ops.. There are no posts to display! </p>
     {% endfor %}
 {% endblock %}
