@@ -4,10 +4,27 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     </head>
     <body>
-        <h1>CFSJ Blog</h1>
-        <hr>
-        <nav></nav>
+        <nav>
+            <h1>CFSJ Blog</h1>
+            <ul>
+                {% if current_user.is_authenticated %}
+                    <li><span>Bem vindo {{ current_user.username }}</span></li>
+                    <li><a href="{{ url_for('create') }}">Criar Post</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('register') }}">Registrar</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
         <section class="content">
+            <header>
+                {% block header %}
+                {% endblock %}
+            </header>
+            {% for mensagem in get_flashed_messages() %}
+                <div class="flash">{{ mensagem }}</div>
+            {% endfor %}
             {% block content %}
             {% endblock %}
         </section>

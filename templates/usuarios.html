@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Usuarios - {% endblock %}
+
+{% block content %}
+    {% for usuario in usuarios %}
+        <!-- {{ loop }} -->
+        <article class="usuario">
+            <header>
+                <div>
+                    <h1>{{ usuario.title }}</h1>
+                    <div class="about">Nome: {{ usuario.username }} - Email: {{ usuario.email }}</div>
+                </div>
+            </header>
+        </article>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+    {% else %}
+        <p class="no-posts"> Ops.. There are no users to display! </p>
+    {% endfor %}
+{% endblock %}
