@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, current_user, logout_user, login_user, login_required
 from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import desc
 import os
 
 app = Flask(__name__)
@@ -46,7 +47,7 @@ db.create_all()
 
 @app.route("/")
 def index():
-    posts = Post.query.order_by(-Post.created).all()
+    posts = Post.query.order_by(desc(Post.created)).all()
     return render_template("index.html", posts=posts)
 
 @app.route('/register', methods=["GET","POST"])
